@@ -1,4 +1,19 @@
-# ByteRescue 0.1.2
+# ByteRescue
+
+**Storage Analysis & Data Recovery**
+
+[![CI](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/python-ci.yml/badge.svg)](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/python-ci.yml)
+[![Build](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/build-windows.yml/badge.svg)](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/build-windows.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
+[![GitHub Stars](https://img.shields.io/github/stars/CodingJeffRoblox/ByteRescue?style=social)](https://github.com/CodingJeffRoblox/ByteRescue/stargazers)
+
+> A read-oriented desktop utility for storage analysis, file inspection, hashing, hex viewing, and basic signature-based recovery.
+
+**Current release:** `0.1.2` · **Status:** Early development
+
+---
 
 **Storage Analysis & Data Recovery**
 
@@ -10,7 +25,23 @@
 
 *Released: September 22, 2026*
 
-**GitHub Repository:** [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+**Repository:** [github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+
+## Project
+
+ByteRescue is being developed as an open-source storage analysis and recovery project. The project currently focuses on Windows and is intentionally conservative about recovery claims: this prototype does **not** guarantee recovery of every file type, filesystem, or deleted file.
+
+### Quick Links
+
+- [Installation & Usage](#first-run)
+- [Features](#features-in-this-prototype)
+- [Support](SUPPORT.md)
+- [Security Policy](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Report a Bug](https://github.com/CodingJeffRoblox/ByteRescue/issues/new?template=bug_report.yml)
+- [Request a Feature](https://github.com/CodingJeffRoblox/ByteRescue/issues/new?template=feature_request.yml)
+- [Releases](https://github.com/CodingJeffRoblox/ByteRescue/releases)
 
 ## Start the GUI
 
@@ -43,6 +74,8 @@ python app.py
 ```
 
 ## What's New in 0.1.2
+
+This development release focuses on making the desktop interface easier to use, safer to inspect, and more resilient during recovery operations.
 
 - Added "What am I looking at?" tab
   - Explains physical drives
@@ -111,6 +144,8 @@ ByteRescue is a storage analysis and data recovery tool designed for Windows sys
 
 ## Supported File Systems
 
+> **Current limitation:** the prototype does not yet implement full filesystem parsing. The list below describes storage/filesystem environments the project is intended to support as the low-level recovery engine develops; it should not be read as a claim that every filesystem feature is currently implemented.
+
 ByteRescue works with Windows-compatible file systems through physical disk access:
 
 ### Primary Support
@@ -132,6 +167,8 @@ ByteRescue works with Windows-compatible file systems through physical disk acce
 - **RAID Arrays**: Individual RAID member analysis only (not RAID reconstruction)
 
 ## Recovery Use Cases by File Type
+
+> File extensions alone do not determine whether a deleted file can be recovered. Current carving support is limited to the signatures implemented by the prototype.
 
 ### Documents
 - **Office Files**: .doc, .docx, .xls, .xlsx, .ppt, .pptx
@@ -188,13 +225,31 @@ ByteRescue works with Windows-compatible file systems through physical disk acce
 - Read-oriented analysis interface
 - Dark desktop GUI
 
-For physical-disk access and future low-level acquisition features, run as Administrator. Do not save recovered files back onto the source drive.
+For physical-disk access and future low-level acquisition features, Administrator privileges may be required on Windows. Do not save recovered files back onto the source drive.
 
 **Important:** SSD TRIM can make deleted data unrecoverable. Signature carving is a basic first-pass recovery feature in this release.
 
 ## License
 
 ByteRescue is open source software released under the MIT License. See the [LICENSE](LICENSE) file for the full license text.
+
+### Project Structure
+
+```text
+ByteRescue/
+├── app.py
+├── byterescue/
+├── requirements.txt
+├── ByteRescue.bat
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   └── workflows/
+├── CONTRIBUTING.md
+├── SUPPORT.md
+├── SECURITY.md
+├── CODE_OF_CONDUCT.md
+└── LICENSE
+```
 
 ### Contributing
 
