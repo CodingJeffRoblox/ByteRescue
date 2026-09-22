@@ -1,21 +1,53 @@
 @echo off
-setlocal enableextensions enabledelayedexpansion
+setlocal EnableExtensions EnabledDelayedExpansion
 
-rem --- ByteRescue Windows launcher ---
+rem ===============================
+rem ByteRescue Launcher
+rem ===============================
+
+cd /d "%~dp0"
+set "APP_FILE=%~dp0app.py"
+
+if not exist "%APP_FILE%" (
+  cls
+  color 0C
+  echo.
+  echo [ERROR] app.py was not found in the current folder.
+  echo Please make sure ByteRescue is installed correctly.
+  echo.
+  pause
+  exit /b 1
+)
+
 color 0A
 title ByteRescue
 cls
 
-cd /d "%~dp0"
+rem Fancy banner
+echo  .---.      .-''-.   .--.   .-./`) ,---.    .-'''-.  
+echo  |   |  .--./) / _ `\\  |  |  \ _ /| |   |  / _     \
+ echo  |   | / _ /|  // / /  |  |  ( ' ) |   |  | / )   | |
+ echo  |   |( ' )|  || | |  |  |  .(_./) |   |  .-.\  | |
+ echo  |   | / /  |  || | |  |  |  .---. |   |  |  '|'  | |
+ echo  |   |(_/  .|  || | |  |  |  |   | |   |  |  | |  | |
+ echo  |   |     /|  \\ \_\_/  |  |  |   | |   |  |  | |  | |
+ echo  |   |   .' |   `-.__.'|  |  |   | |   |  |  | |  | |
+ echo  '---'---'   `-.__.-'  '--'  '--'   '---'  `-._| |-' 
+ echo.
+ echo    ======  B Y T E  R E S C U E  ======
+ echo.
 
-rem Prefer Python, then fallback to Windows Store launcher
+echo Starting ByteRescue...
+
 where python >nul 2>&1
 if errorlevel 1 (
   where py >nul 2>&1
   if errorlevel 1 (
+    cls
+    color 0C
     echo.
     echo [ERROR] Python 3.11+ was not found on this system.
-    echo Please install Python 3.11 or newer and ensure it is in PATH.
+    echo Please install Python 3.11 or newer and make sure it is in PATH.
     echo.
     pause
     exit /b 1
@@ -25,28 +57,23 @@ if errorlevel 1 (
   set "PYTHON_CMD=python"
 )
 
-rem Check Python version requirement
 %PYTHON_CMD% -c "import sys; raise SystemExit(0 if sys.version_info[:2] >= (3, 11) else 1)" >nul 2>&1
 if errorlevel 1 (
+  cls
+  color 0C
   echo.
   echo [ERROR] Python 3.11 or newer is required to run ByteRescue.
-  echo Please install a supported version and try again.
+  echo Your current Python version is too old or not configured correctly.
   echo.
   pause
   exit /b 1
 )
 
-echo ===============================================================
-echo                     ByteRescue Launcher
-echo ===============================================================
-echo.
-echo Starting ByteRescue...
-
 %PYTHON_CMD% app.py
 if errorlevel 1 (
   echo.
   echo [ERROR] ByteRescue exited with an error.
-  echo Review the console output above, then press any key to close.
+  echo Review the console output above and press any key to exit.
   echo.
   pause
 )
