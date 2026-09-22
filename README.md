@@ -2,7 +2,15 @@
 
 **Storage Analysis & Data Recovery**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
+[![GitHub Stars](https://img.shields.io/github/stars/CodingJeffRoblox/ByteRescue?style=social)](https://github.com/CodingJeffRoblox/ByteRescue/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/CodingJeffRoblox/ByteRescue?style=social)](https://github.com/CodingJeffRoblox/ByteRescue/network/members)
+
 *Released: September 22, 2026*
+
+**GitHub Repository:** [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
 
 ## Start the GUI
 
@@ -67,6 +75,10 @@ python app.py
   - Prevents overwriting existing recovered files
   - Shows scan status
   - Recovery results are displayed in the GUI
+
+## Project Tags
+
+`data-recovery` `file-recovery` `storage-analysis` `forensics` `windows` `python` `gui` `hex-viewer` `disk-analysis` `file-carving` `ntfs` `fat32` `open-source` `mit-license`
 
 ## What is ByteRescue?
 
@@ -192,6 +204,8 @@ As an open source project, contributions are welcome! Please see [CONTRIBUTING.m
 - Submitting pull requests
 - Development priorities and focus areas
 
+**Contribute on GitHub:** [https://github.com/CodingJeffRoblox/ByteRescue/fork](https://github.com/CodingJeffRoblox/ByteRescue/fork)
+
 ### Support
 
 For help with using ByteRescue, troubleshooting, and common issues, please see [SUPPORT.md](SUPPORT.md). It includes:
@@ -201,7 +215,9 @@ For help with using ByteRescue, troubleshooting, and common issues, please see [
 - When recovery isn't possible
 - Community support resources
 
+**Report Issues:** [https://github.com/CodingJeffRoblox/ByteRescue/issues](https://github.com/CodingJeffRoblox/ByteRescue/issues)
+**Discussions:** [https://github.com/CodingJeffRoblox/ByteRescue/discussions](https://github.com/CodingJeffRoblox/ByteRescue/discussions)
+
 ### Disclaimer
 
-This software is provided for educational and data recovery purposes. The authors are not responsible for any data loss or damage that may occur while using this software. Always backup important data and use recovery tools responsibly.
-"# ByteRescue" 
+This software is provided for educational and data recovery purposes. The authors are not responsible for any data loss or damage that may occur while using this software. Always backup important data and use recovery tools responsibly. 

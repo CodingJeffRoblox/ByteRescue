@@ -1,11 +1,14 @@
 # ByteRescue Support
 
+**GitHub Repository:** [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+
 ## Getting Help
 
 ### Documentation
 - **README.md** - Main documentation, features, and getting started guide
 - **CONTRIBUTING.md** - For contributors and developers
 - This file (SUPPORT.md) - Support and troubleshooting information
+- **GitHub Repository** - [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
 
 ### Common Issues
 
@@ -139,4 +142,7 @@ For critical data recovery situations:
 
 ## Contact
 
-For questions, issues, or contributions, please use the project's GitHub repository.
+For questions, issues, or contributions, please use the project's GitHub repository:
+- **Main Repository:** [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+- **Issues:** [https://github.com/CodingJeffRoblox/ByteRescue/issues](https://github.com/CodingJeffRoblox/ByteRescue/issues)
+- **Discussions:** [https://github.com/CodingJeffRoblox/ByteRescue/discussions](https://github.com/CodingJeffRoblox/ByteRescue/discussions)
