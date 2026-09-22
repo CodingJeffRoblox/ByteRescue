@@ -1,0 +1,56 @@
+name: Build Windows Package
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pyinstaller
+
+      - name: Build executable
+        run: pyinstaller --noconfirm --clean --name ByteRescue --windowed --onefile app.py
+
+      - name: Package source
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist/ByteRescue-source | Out-Null
+          Copy-Item app.py dist/ByteRescue-source/
+          Copy-Item ByteRescue.bat dist/ByteRescue-source/
+          Copy-Item requirements.txt dist/ByteRescue-source/
+          Copy-Item README.md dist/ByteRescue-source/
+          Copy-Item LICENSE dist/ByteRescue-source/
+          Copy-Item SUPPORT.md dist/ByteRescue-source/
+          Copy-Item SECURITY.md dist/ByteRescue-source/
+          Copy-Item CONTRIBUTING.md dist/ByteRescue-source/
+          Copy-Item CODE_OF_CONDUCT.md dist/ByteRescue-source/
+          Copy-Item -Recurse byterescue dist/ByteRescue-source/byterescue
+
+      - name: Upload Windows executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: ByteRescue-Windows
+          path: dist/ByteRescue.exe
+
+      - name: Upload source package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ByteRescue-source
+          path: dist/ByteRescue-source
