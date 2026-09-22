@@ -1,4 +1,4 @@
-# ByteRescue 0.1.1
+# ByteRescue 0.1.2
 
 **Storage Analysis & Data Recovery**
 
@@ -31,6 +31,40 @@ Then:
 ```powershell
 python app.py
 ```
+
+## What's New in 0.1.2
+
+- Added "What am I looking at?" tab
+  - Explains physical drives
+  - Capacity
+  - Interfaces
+  - Status
+  - Analysis results
+  - SHA-256
+  - Hex viewer
+  - File carving/recovery
+  - SSD/TRIM limitations
+  - Safe recovery practices
+- Fixed the white hover issue
+  - Buttons now have dark hover colors
+  - Tabs have dark hover colors
+  - Drive selection has a dark highlight
+  - No more white flashing when hovering
+- Improved crash handling
+  - Startup errors are displayed instead of silently returning to the command prompt
+  - File errors produce a readable error dialog
+  - Recovery errors are caught
+  - GUI remains responsive during recovery scans
+  - Recovery buttons are temporarily disabled while scanning
+- Improved the Hex Viewer
+  - Scrollbars
+  - Dark interface
+  - Larger viewing area
+  - 128 KB preview
+- Improved recovery
+  - Prevents overwriting existing recovered files
+  - Shows scan status
+  - Recovery results are displayed in the GUI
 
 ## Features in this prototype
 
