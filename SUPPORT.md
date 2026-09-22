@@ -46,7 +46,7 @@
 
 ### Crash and Error Handling
 
-ByteRescue 0.1.2 includes improved crash handling:
+ByteRescue includes crash handling:
 - Startup errors are displayed in error dialogs
 - File access errors show readable messages
 - The GUI remains responsive during scans

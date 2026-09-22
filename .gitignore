@@ -1,0 +1,12 @@
+# Runtime-generated, never commit
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Local virtual environments
+venv/
+.venv/

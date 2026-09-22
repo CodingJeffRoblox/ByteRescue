@@ -1,10 +1,7 @@
 @echo off
+:: Thin double-click shim -- the real launcher logic (elevation, Python
+:: detection/auto-install, launching the app) lives in ByteRescue.ps1.
+:: Batch is a poor fit for that logic; see ByteRescue.ps1's header comment.
 cd /d "%~dp0"
-where python >nul 2>&1
-if errorlevel 1 (
-  echo Python was not found. Install Python 3.11+ and try again.
-  pause
-  exit /b 1
-)
-python app.py
-if errorlevel 1 pause
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ByteRescue.ps1"
+exit /b %errorlevel%
