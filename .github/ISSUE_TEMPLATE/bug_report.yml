@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem in ByteRescue
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not upload personal data, private files, credentials, or sensitive disk images.
+
+  - type: input
+    id: version
+    attributes:
+      label: ByteRescue version
+      placeholder: "0.1.3 or commit SHA"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Clearly describe the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ByteRescue
+        2. Select...
+        3. Click...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error messages or logs
+      description: Remove personal information before posting.
+      render: text
+    validations:
+      required: false
