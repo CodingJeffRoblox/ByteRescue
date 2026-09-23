@@ -1,0 +1,181 @@
+{
+  "project": {
+    "name": "ByteRescue Development Roadmap",
+    "description": "Track development progress, bug fixes, and feature requests for ByteRescue",
+    "visibility": "public"
+  },
+  "columns": [
+    {
+      "name": "Backlog",
+      "description": "New ideas, future features, low-priority items"
+    },
+    {
+      "name": "To Do", 
+      "description": "Ready to work on, prioritized items"
+    },
+    {
+      "name": "In Progress",
+      "description": "Currently being worked on"
+    },
+    {
+      "name": "In Review",
+      "description": "Ready for code review"
+    },
+    {
+      "name": "Done",
+      "description": "Completed and merged"
+    }
+  ],
+  "labels": {
+    "priority": [
+      {
+        "name": "priority: critical",
+        "color": "b60205",
+        "description": "Critical bugs, security issues"
+      },
+      {
+        "name": "priority: high", 
+        "color": "d93f0b",
+        "description": "Important features, major bugs"
+      },
+      {
+        "name": "priority: medium",
+        "color": "fbca04",
+        "description": "Normal priority items"
+      },
+      {
+        "name": "priority: low",
+        "color": "fef2c0",
+        "description": "Nice to have, minor issues"
+      }
+    ],
+    "type": [
+      {
+        "name": "bug",
+        "color": "e11d21",
+        "description": "Bug reports"
+      },
+      {
+        "name": "enhancement",
+        "color": "a2eeef", 
+        "description": "Feature requests"
+      },
+      {
+        "name": "documentation",
+        "color": "0075ca",
+        "description": "Documentation improvements"
+      },
+      {
+        "name": "security",
+        "color": "d93f0b",
+        "description": "Security vulnerabilities"
+      },
+      {
+        "name": "performance",
+        "color": "5319e7",
+        "description": "Performance improvements"
+      },
+      {
+        "name": "ui/ux",
+        "color": "bfd4f2",
+        "description": "User interface improvements"
+      },
+      {
+        "name": "refactor",
+        "color": "6e7781",
+        "description": "Code refactoring"
+      }
+    ],
+    "status": [
+      {
+        "name": "good first issue",
+        "color": "7057ff",
+        "description": "Good for new contributors"
+      },
+      {
+        "name": "help wanted",
+        "color": "008672",
+        "description": "Community help needed"
+      },
+      {
+        "name": "blocked",
+        "color": "e11d21",
+        "description": "Blocked by other issues"
+      },
+      {
+        "name": "wontfix",
+        "color": "ffffff",
+        "description": "Won't be implemented"
+      }
+    ]
+  },
+  "milestones": [
+    {
+      "name": "0.8.0",
+      "description": "Enhanced filesystem support and performance",
+      "items": [
+        "NTFS filesystem support",
+        "exFAT filesystem support", 
+        "Performance improvements for large drives",
+        "Enhanced recovery algorithms"
+      ]
+    },
+    {
+      "name": "0.9.0",
+      "description": "Cross-platform and enhanced features",
+      "items": [
+        "Cross-platform support (Linux/Mac)",
+        "Additional file format signatures",
+        "Improved GUI responsiveness",
+        "Batch recovery operations"
+      ]
+    },
+    {
+      "name": "1.0.0",
+      "description": "Production-ready release",
+      "items": [
+        "Full filesystem support",
+        "Complete documentation",
+        "Extensive testing suite",
+        "Production-ready stability"
+      ]
+    }
+  ],
+  "automation_rules": [
+    {
+      "trigger": "label_added",
+      "condition": "label: security",
+      "action": "add_to_column",
+      "target": "To Do",
+      "priority": "high"
+    },
+    {
+      "trigger": "label_added", 
+      "condition": "label: bug AND priority: critical",
+      "action": "add_to_column",
+      "target": "To Do",
+      "priority": "immediate"
+    },
+    {
+      "trigger": "label_added",
+      "condition": "label: enhancement",
+      "action": "add_to_column", 
+      "target": "Backlog"
+    },
+    {
+      "trigger": "pr_opened",
+      "action": "move_to_column",
+      "target": "In Review"
+    },
+    {
+      "trigger": "pr_merged",
+      "action": "move_to_column",
+      "target": "Done"
+    },
+    {
+      "trigger": "issue_closed",
+      "action": "move_to_column",
+      "target": "Done"
+    }
+  ]
+}
