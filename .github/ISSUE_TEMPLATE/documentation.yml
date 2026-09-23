@@ -1,0 +1,63 @@
+name: Documentation
+description: Report an issue with ByteRescue documentation
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 Documentation Issue
+        Help us improve ByteRescue documentation by reporting inaccuracies, missing information, or suggestions for improvement.
+
+  - type: dropdown
+    id: doc_type
+    attributes:
+      label: Documentation type
+      options:
+        - README.md
+        - SUPPORT.md
+        - CONTRIBUTING.md
+        - CODE_OF_CONDUCT.md
+        - SECURITY.md
+        - CHANGELOG.md
+        - In-app help text
+        - Code comments
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is the documentation issue?
+      description: Describe the problem with the documentation.
+      placeholder: "The installation instructions in README.md are outdated and don't mention the new pip installation method."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: How should the documentation be improved?
+      placeholder: "Update the installation section to include the new `pip install -e .` method and remove references to the old app.py launcher."
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Location in documentation
+      description: Provide the specific section, line numbers, or page where the issue occurs.
+      placeholder: "README.md, section 'First run', lines 57-69"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other relevant information about the documentation issue.
+    validations:
+      required: false

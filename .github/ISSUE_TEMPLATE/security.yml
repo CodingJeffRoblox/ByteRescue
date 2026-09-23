@@ -1,0 +1,62 @@
+name: Security vulnerability
+description: Report a security vulnerability in ByteRescue
+title: "[Security]: "
+labels:
+  - security
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔒 Security Vulnerability Report
+        **IMPORTANT:** This is for reporting security vulnerabilities. For general bugs, please use the [Bug Report](https://github.com/CodingJeffRoblox/ByteRescue/issues/new?template=bug_report.yml) template.
+
+        Please review our [Security Policy](https://github.com/CodingJeffRoblox/ByteRescue/security) before submitting.
+
+  - type: markdown
+    attributes:
+      value: |
+        > **⚠️ Security Notice:** If you have discovered a security vulnerability, please do not create a public issue. Instead, follow our [responsible disclosure policy](https://github.com/CodingJeffRoblox/ByteRescue/security) to report it privately.
+
+  - type: textarea
+    id: vulnerability
+    attributes:
+      label: Vulnerability description
+      description: Provide a detailed description of the security vulnerability.
+      placeholder: "Describe the security issue, including potential impact and affected components."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Potential impact
+      description: What is the potential impact of this vulnerability?
+      placeholder: "This could allow an attacker to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Detailed steps to reproduce the vulnerability.
+      placeholder: "Provide specific steps or code examples that demonstrate the vulnerability."
+    validations:
+      required: true
+
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested mitigation
+      description: Any suggestions for how to mitigate or fix this vulnerability.
+      placeholder: "I believe this can be fixed by..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other relevant information about the vulnerability.
+    validations:
+      required: false

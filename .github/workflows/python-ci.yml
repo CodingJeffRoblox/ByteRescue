@@ -25,8 +25,14 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Compile Python sources
-        run: python -m compileall app.py byterescue
+      - name: Install package
+        run: python -m pip install -e .
 
-      - name: Check launcher
-        run: python -c "import app; print('ByteRescue launcher import OK')"
+      - name: Compile Python sources
+        run: python -m compileall byterescue
+
+      - name: Check package import
+        run: python -c "import byterescue; print(f'ByteRescue version: {byterescue.__version__}')"
+
+      - name: Check module entry point
+        run: python -c "from byterescue.__main__ import main; print('Module entry point OK')"

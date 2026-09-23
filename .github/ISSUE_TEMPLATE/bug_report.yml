@@ -7,13 +7,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please do not upload personal data, private files, credentials, or sensitive disk images.
+        ## ⚠️ Important Security Notice
+        Please do not upload personal data, private files, credentials, or sensitive disk images. If you encounter a security vulnerability, please use the [Security Policy](https://github.com/CodingJeffRoblox/ByteRescue/security) instead.
 
   - type: input
     id: version
     attributes:
       label: ByteRescue version
-      placeholder: "0.1.3 or commit SHA"
+      placeholder: "0.7.0 or commit SHA"
+      description: Check the "About" section in the app or run `python -c "import byterescue; print(byterescue.__version__)"`
     validations:
       required: true
 
@@ -25,11 +27,24 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: python_version
+    attributes:
+      label: Python version
+      options:
+        - "3.11"
+        - "3.12"
+        - "3.13"
+        - "Other"
+    validations:
+      required: true
+
   - type: textarea
     id: description
     attributes:
       label: What happened?
-      description: Clearly describe the problem.
+      description: Clearly describe the problem you encountered.
+      placeholder: "When I tried to scan a drive, the application crashed with..."
     validations:
       required: true
 
@@ -37,10 +52,21 @@ body:
     id: reproduce
     attributes:
       label: Steps to reproduce
+      description: Provide detailed steps to reproduce the issue.
       placeholder: |
         1. Open ByteRescue
-        2. Select...
-        3. Click...
+        2. Select a physical drive from the dropdown
+        3. Click "Start Recovery Scan"
+        4. Application crashes after 30 seconds
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen instead.
+      placeholder: "The scan should complete and show recovered files in the results table."
     validations:
       required: true
 
@@ -48,7 +74,20 @@ body:
     id: logs
     attributes:
       label: Error messages or logs
-      description: Remove personal information before posting.
+      description: Paste relevant error messages or log output from `logs/byterescue.log`. Remove personal information before posting.
       render: text
+      placeholder: |
+        [ByteRescue] ERROR    Failed to open device: Access denied
+        Traceback (most recent call last):
+          File "byterescue/recovery/scanner.py", line 123, in scan
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other relevant information about the issue.
+      placeholder: "This issue occurs on my SSD but not on my USB drive."
     validations:
       required: false

@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Documentation
+    url: https://github.com/CodingJeffRoblox/ByteRescue#readme
+    about: Check the README for general information and usage instructions
+  - name: 💬 Discussions
+    url: https://github.com/CodingJeffRoblox/ByteRescue/discussions
+    about: Use GitHub Discussions for questions, ideas, and general conversation
+  - name: 🐛 Existing Issues
+    url: https://github.com/CodingJeffRoblox/ByteRescue/issues
+    about: Search existing issues to see if your problem has already been reported
+  - name: 🔒 Security Policy
+    url: https://github.com/CodingJeffRoblox/ByteRescue/security
+    about: For security vulnerabilities, please review our security policy

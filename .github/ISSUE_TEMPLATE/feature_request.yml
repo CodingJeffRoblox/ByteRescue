@@ -4,10 +4,18 @@ title: "[Feature]: "
 labels:
   - enhancement
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Feature Request
+        Thank you for suggesting improvements to ByteRescue! Please provide as much detail as possible to help us understand and evaluate your request.
+
   - type: textarea
     id: problem
     attributes:
       label: What problem would this solve?
+      description: Describe the current limitation or pain point this feature would address.
+      placeholder: "Currently, ByteRescue can only recover files by signature, but I need a way to filter results by file size."
     validations:
       required: true
 
@@ -15,6 +23,8 @@ body:
     id: proposal
     attributes:
       label: What would you like ByteRescue to do?
+      description: Describe the desired functionality in detail.
+      placeholder: "Add a file size filter in the Recovery Center that allows users to set minimum and maximum file size thresholds for recovered files."
     validations:
       required: true
 
@@ -22,5 +32,25 @@ body:
     id: alternatives
     attributes:
       label: Alternatives considered
+      description: Have you considered any workarounds or alternative solutions?
+      placeholder: "I currently filter the results manually after the scan completes, but this is time-consuming for large drives."
+    validations:
+      required: false
+
+  - type: textarea
+    id: priority
+    attributes:
+      label: Priority assessment
+      description: How important is this feature to you?
+      placeholder: "This would significantly improve my workflow when scanning large drives."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other relevant information, mockups, or examples.
+      placeholder: "Here's a mockup of how the UI could look with this feature..."
     validations:
       required: false
