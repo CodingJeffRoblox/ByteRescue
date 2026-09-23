@@ -13,19 +13,11 @@
 
 **Current release:** `0.7.0` · **Status:** Early development
 
----
-
-**Storage Analysis & Data Recovery**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-[![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
-[![GitHub Stars](https://img.shields.io/github/stars/CodingJeffRoblox/ByteRescue?style=social)](https://github.com/CodingJeffRoblox/ByteRescue/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/CodingJeffRoblox/ByteRescue?style=social)](https://github.com/CodingJeffRoblox/ByteRescue/network/members)
-
 *Released: September 22, 2026*
 
 **Repository:** [github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+
+---
 
 ## Project
 
