@@ -11,7 +11,7 @@
 
 > A read-oriented desktop utility for storage analysis, file inspection, hashing, hex viewing, and signature/text-based recovery.
 
-**Current release:** `0.6.1` · **Status:** Early development
+**Current release:** `0.7.0` · **Status:** Early development
 
 ---
 
@@ -75,6 +75,21 @@ Then:
 ```powershell
 python app.py
 ```
+
+## What's New in 0.7.0
+
+- **Live console log output**: previously the log file (`logs/byterescue.log`) was the only place to see
+  what ByteRescue was doing. Now, whenever it's run from a console (the normal case -- the elevated
+  window `ByteRescue.ps1` opens stays open), the same events stream live to that window too. Set the
+  `BYTERESCUE_DEBUG` environment variable to see verbose `DEBUG`-level output; every run also now logs
+  its environment once at startup (version, Python build, OS, elevation status).
+- **Fixed another GUI freeze, found while adding the above**: selecting "Physical Drive" as the Recovery
+  Center's source used to block the whole window for several seconds (measured ~5.9s) shelling out to
+  PowerShell/WMI directly on the GUI thread, with a redundant third call on every dropdown change on top
+  of that. Backgrounded and cached, same pattern used for the main window's drive list in 0.5.0. See
+  CHANGELOG.md for the mechanism and the new regression test.
+- Repo cleanup: removed stray compiled `.pyc` files that had been committed before `.gitignore` excluded
+  them.
 
 ## What's New in 0.6.1
 

@@ -221,5 +221,62 @@ class TestStartScanCanRunTwice(unittest.TestCase):
             self.assertEqual(len(rc.tree.get_children()), 1, "second scan should have populated results again")
 
 
+@unittest.skipUnless(os.name == "nt", "GUI tests require a Windows display")
+class TestDriveListDoesNotBlockGuiThread(unittest.TestCase):
+    """Regression test for a real bug: selecting "Physical Drive" as the
+    source called get_disks() and get_physical_disk_media_types() --
+    each a blocking subprocess call to PowerShell/WMI -- directly on the
+    GUI thread, freezing the whole window for several seconds (measured
+    ~5.9s on real hardware). _on_drive_selected() then made a THIRD
+    redundant call to get_physical_disk_media_types() on every dropdown
+    change. Fixed by moving both calls to a background thread and caching
+    media types for _on_drive_selected() to reuse.
+    """
+
+    def _pump_until(self, predicate, timeout_s=15):
+        return _pump(ROOT, predicate, timeout_s)
+
+    def test_selecting_drive_source_returns_immediately(self):
+        slow_disks = [{"Index": 0, "Model": "Fake Disk", "Size": 1000000000}]
+        slow_media = {"0": "SSD"}
+
+        def fake_get_disks():
+            time.sleep(0.5)  # stand-in for the real ~seconds-long PowerShell call
+            return slow_disks
+
+        def fake_get_media_types():
+            time.sleep(0.5)
+            return slow_media
+
+        original_get_disks = app_module.get_disks
+        original_get_media = app_module.get_physical_disk_media_types
+        app_module.get_disks = fake_get_disks
+        app_module.get_physical_disk_media_types = fake_get_media_types
+        self.addCleanup(lambda: setattr(app_module, "get_disks", original_get_disks))
+        self.addCleanup(lambda: setattr(app_module, "get_physical_disk_media_types", original_get_media))
+
+        rc = app_module.RecoveryCenter(ROOT)
+        self.addCleanup(rc.destroy)
+
+        t0 = time.monotonic()
+        rc.source_kind_var.set("drive")
+        rc._on_source_kind_change()  # exactly what the radiobutton's command calls
+        elapsed = time.monotonic() - t0
+        self.assertLess(elapsed, 0.3, "selecting drive source must not block waiting on the PowerShell calls")
+
+        self.assertTrue(
+            self._pump_until(lambda: rc._drives, timeout_s=5),
+            "background thread never populated the drive list",
+        )
+        self.assertEqual(rc._media_types, slow_media)
+
+        # A dropdown re-selection must reuse the cache, not call the slow
+        # function again on the GUI thread.
+        app_module.get_physical_disk_media_types = lambda: (_ for _ in ()).throw(
+            AssertionError("get_physical_disk_media_types() should not be called again on selection")
+        )
+        rc._on_drive_selected()
+
+
 if __name__ == "__main__":
     unittest.main()

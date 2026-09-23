@@ -3,6 +3,39 @@
 All notable changes to this project are documented here. Versions follow
 [Semantic Versioning](https://semver.org/): the major.minor.patch pattern.
 
+## 0.7.0
+
+Repo cleanup, live debug logging, and another GUI-freeze bug caught while adding it.
+
+### Added
+- `applog.py` now also streams to the console (in addition to the existing log file) whenever ByteRescue
+  is run from one -- which is the normal case, since `ByteRescue.ps1` launches it inside the elevated
+  PowerShell window it opens and leaves that window open. Console output is `INFO` and up by default; set
+  the `BYTERESCUE_DEBUG` environment variable to anything non-empty for a fully verbose `DEBUG` stream.
+- Every run now logs its environment once at startup (ByteRescue version, Python version/executable,
+  OS platform string, whether running elevated, working directory) -- exactly what would otherwise need
+  to be asked for when someone reports a bug.
+- New DEBUG-level log lines for previously-silent user actions in the Recovery Center: changing recovery
+  mode, changing source kind, choosing a source file, choosing a destination folder, and selecting a
+  drive -- so a log file from a real session now shows what the user actually clicked, not just what the
+  scan engine did.
+
+### Fixed
+- **Selecting "Physical Drive" as the Recovery Center's source froze the whole window for several
+  seconds** (measured 5.86s on real hardware). `_refresh_drive_list()` called `get_disks()` and
+  `get_physical_disk_media_types()` directly on the GUI thread -- each shells out to a PowerShell/WMI
+  subprocess -- and `_on_drive_selected()` made a *third* redundant synchronous call to
+  `get_physical_disk_media_types()` on every dropdown change on top of that. This is the same class of
+  bug already fixed once for the main window's drive list; this Recovery Center picker was missed at the
+  time. Fixed by moving both calls to a background thread (matching the main window's existing pattern)
+  and caching media types for reuse instead of re-fetching on every selection. Reproduced and confirmed
+  with a new regression test (`tests/test_gui_recovery_center.py`, `TestDriveListDoesNotBlockGuiThread`)
+  before and after the fix; selecting a drive source now returns in under a millisecond instead of ~6s.
+
+### Changed
+- Removed 16 stray `__pycache__/*.pyc` files that had been committed to the repo despite `.gitignore`
+  already excluding them (added before the ignore rule existed, so git kept tracking them regardless).
+
 ## 0.6.1
 
 A targeted bug hunt across every button and control in the app. Patch release: bug fixes only, no new

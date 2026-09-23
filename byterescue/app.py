@@ -1037,6 +1037,7 @@ class RecoveryCenter(tk.Toplevel):
 
         self._chosen_file_path = None
         self._drives = []  # list of raw disk dicts from get_disks()
+        self._media_types = {}  # Index (str) -> "SSD"/"HDD"/etc, filled in by _apply_drive_list
         self.format_vars = {name: tk.BooleanVar(value=True) for name in signatures.SIGNATURES}
 
         self._build_ui()
@@ -1360,6 +1361,7 @@ class RecoveryCenter(tk.Toplevel):
 
     def _on_mode_change(self):
         mode = self.mode_var.get()
+        applog.get_logger().debug("Recovery mode changed to %r", mode)
         for f in (self.types_frame, self.text_frame, self.fs_frame):
             f.pack_forget()
         if mode in (MODE_SIGNATURE, MODE_DEEP):
@@ -1372,6 +1374,7 @@ class RecoveryCenter(tk.Toplevel):
 
     def _on_source_kind_change(self):
         kind = self.source_kind_var.get()
+        applog.get_logger().debug("Source kind changed to %r", kind)
         if kind == "file":
             self.drive_source_frame.pack_forget()
             self.file_source_frame.pack(side="left")
@@ -1391,15 +1394,33 @@ class RecoveryCenter(tk.Toplevel):
             return
         self._chosen_file_path = Path(path)
         self.source_path_var.set(str(self._chosen_file_path))
+        applog.get_logger().debug("Source file chosen: %s", self._chosen_file_path)
 
     def _refresh_drive_list(self):
-        self._drives = get_disks()
-        media_types = get_physical_disk_media_types()
+        # get_disks()/get_physical_disk_media_types() each shell out to
+        # PowerShell/WMI -- measured at ~6s combined blocking the GUI
+        # thread entirely before this was backgrounded. Same fix as
+        # ByteRescue._fetch_disks_async, applied here too.
+        self.drive_box.configure(values=["Detecting drives..."])
+        self.drive_choice_var.set("Detecting drives...")
+        self.ssd_warning_var.set("")
+
+        def worker():
+            drives = get_disks()
+            media_types = get_physical_disk_media_types()
+            self.after(0, lambda: self._apply_drive_list(drives, media_types))
+
+        threading.Thread(target=worker, daemon=True, name="ByteRescue-drivelist").start()
+
+    def _apply_drive_list(self, drives, media_types):
+        self._drives = drives
+        self._media_types = media_types  # cached so _on_drive_selected doesn't re-fetch (another blocking call) per click
         labels = []
-        for d in self._drives:
+        for d in drives:
             idx = d.get("Index")
             media = media_types.get(str(idx), "")
             labels.append(f"Disk {idx}: {d.get('Model') or 'Unknown'} ({human(d.get('Size'))}) {('[' + media + ']') if media else ''}".strip())
+        applog.get_logger().debug("Drive list refreshed: %d drive(s) found", len(drives))
         self.drive_box.configure(values=labels)
         if labels:
             self.drive_box.current(0)
@@ -1413,8 +1434,8 @@ class RecoveryCenter(tk.Toplevel):
         if i < 0 or i >= len(self._drives):
             return
         d = self._drives[i]
-        media_types = get_physical_disk_media_types()
-        media = (media_types.get(str(d.get("Index"))) or "").upper()
+        applog.get_logger().debug("Drive selected: Index=%s Model=%r", d.get("Index"), d.get("Model"))
+        media = (self._media_types.get(str(d.get("Index"))) or "").upper()
         base = (
             "Physical-drive scanning opens the raw device path (\\\\.\\PhysicalDriveN). This requires "
             "running ByteRescue as Administrator, is strictly read-only, and has not been verified against "
@@ -1433,6 +1454,7 @@ class RecoveryCenter(tk.Toplevel):
         if not path:
             return
         self.dest_var.set(path)
+        applog.get_logger().debug("Recovery destination chosen: %s", path)
 
     # ------------------------------------------------------------------
     # Scan lifecycle
