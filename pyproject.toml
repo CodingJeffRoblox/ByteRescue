@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "byterescue"
+version = "0.7.0"
+description = "Storage Analysis & Data Recovery - A read-oriented desktop utility for storage analysis, file inspection, hashing, hex viewing, and signature/text-based recovery"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "CodingJeffRoblox"}
+]
+maintainers = [
+    {name = "CodingJeffRoblox"}
+]
+keywords = [
+    "data-recovery",
+    "file-recovery", 
+    "storage-analysis",
+    "forensics",
+    "windows",
+    "python",
+    "gui",
+    "hex-viewer",
+    "disk-analysis",
+    "file-carving",
+    "ntfs",
+    "fat32",
+    "open-source"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: System Administrators",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Filesystems",
+    "Topic :: System :: Archiving :: Backup",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+byterescue = "byterescue.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/CodingJeffRoblox/ByteRescue"
+Documentation = "https://github.com/CodingJeffRoblox/ByteRescue#readme"
+Repository = "https://github.com/CodingJeffRoblox/ByteRescue"
+"Bug Tracker" = "https://github.com/CodingJeffRoblox/ByteRescue/issues"
+"Source Code" = "https://github.com/CodingJeffRoblox/ByteRescue"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["byterescue*"]
+exclude = ["tests*", "docs*"]
+
+[tool.setuptools.package-data]
+byterescue = ["*.py", "*.pyi"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
