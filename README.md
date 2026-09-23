@@ -49,23 +49,35 @@ Easiest: double-click **`ByteRescue.bat`**. It's a thin shim that hands off to `
 Or, if you already have Python 3.11+ set up and just want to run it directly:
 
 ```powershell
-python app.py
+python -m byterescue
+```
+
+After installing the package:
+
+```powershell
+byterescue
 ```
 
 The GUI should open in a desktop window titled **ByteRescue — Storage Analysis & Data Recovery**.
 
 ## First run
 
-Install the small dependencies:
+Install the package:
 
 ```powershell
-python -m pip install -r requirements.txt
+python -m pip install -e .
 ```
 
 Then:
 
 ```powershell
-python app.py
+python -m byterescue
+```
+
+Or after installation:
+
+```powershell
+byterescue
 ```
 
 ## What's New in 0.7.0
