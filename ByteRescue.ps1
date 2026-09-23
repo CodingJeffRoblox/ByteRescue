@@ -34,15 +34,6 @@ function Write-ErrorAndWait {
 
 Write-Banner
 
-$appPath = Join-Path $ScriptDir "app.py"
-if (-not (Test-Path -LiteralPath $appPath)) {
-    Write-ErrorAndWait @(
-        "[ERROR] app.py was not found in: $ScriptDir",
-        "Please make sure the project files are complete."
-    )
-    exit 1
-}
-
 # --- Elevate to Administrator if not already running elevated ---------------
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = New-Object Security.Principal.WindowsPrincipal($identity)
@@ -134,10 +125,26 @@ if (-not $pythonCmd) {
 }
 
 Write-Host "  Python check passed."
+
+# Check if byterescue package is installed
+& $pythonCmd -c "import byterescue" 2>$null | Out-Null
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "  ByteRescue package not found. Installing..."
+    & $pythonCmd -m pip install -e . --quiet
+    if ($LASTEXITCODE -ne 0) {
+        Write-ErrorAndWait @(
+            "[ERROR] Failed to install ByteRescue package.",
+            "Please run: python -m pip install -e .",
+            "Then run ByteRescue again."
+        )
+        exit 1
+    }
+}
+
 Write-Host "  Launching ByteRescue..."
 Write-Host ""
 
-& $pythonCmd $appPath
+& $pythonCmd -m byterescue
 $exitCode = $LASTEXITCODE
 if ($exitCode -ne 0) {
     Write-ErrorAndWait @(
