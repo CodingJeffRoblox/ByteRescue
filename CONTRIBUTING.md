@@ -1,6 +1,6 @@
 # Contributing to ByteRescue
 
-**GitHub Repository:** [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+**GitHub Repository:** [https://github.com/ItsJeffTheDev/ByteRescue](https://github.com/ItsJeffTheDev/ByteRescue)
 
 Thank you for your interest in contributing to ByteRescue! As an open source project, we welcome contributions from the community.
 
@@ -15,7 +15,7 @@ Thank you for your interest in contributing to ByteRescue! As an open source pro
 ### Setting Up Your Development Environment
 
 1. **Fork the repository**
-   - Go to the ByteRescue GitHub repository: [https://github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+   - Go to the ByteRescue GitHub repository: [https://github.com/ItsJeffTheDev/ByteRescue](https://github.com/ItsJeffTheDev/ByteRescue)
    - Click the "Fork" button in the top right
    - Clone your fork locally (replace YOUR_USERNAME with your GitHub username):
      ```bash
@@ -261,5 +261,5 @@ By contributing to ByteRescue, you agree that your contributions will be license
 We appreciate your interest in contributing to ByteRescue! Every contribution helps make the project better for everyone.
 
 For questions about contributing that aren't covered here, please open a GitHub issue:
-- **Issues:** [https://github.com/CodingJeffRoblox/ByteRescue/issues](https://github.com/CodingJeffRoblox/ByteRescue/issues)
-- **Discussions:** [https://github.com/CodingJeffRoblox/ByteRescue/discussions](https://github.com/CodingJeffRoblox/ByteRescue/discussions)
+- **Issues:** [https://github.com/ItsJeffTheDev/ByteRescue/issues](https://github.com/ItsJeffTheDev/ByteRescue/issues)
+- **Discussions:** [https://github.com/ItsJeffTheDev/ByteRescue/discussions](https://github.com/ItsJeffTheDev/ByteRescue/discussions)
