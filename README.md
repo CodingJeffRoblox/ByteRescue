@@ -2,12 +2,12 @@
 
 **Storage Analysis & Data Recovery**
 
-[![CI](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/python-ci.yml/badge.svg)](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/python-ci.yml)
-[![Build](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/build-windows.yml/badge.svg)](https://github.com/CodingJeffRoblox/ByteRescue/actions/workflows/build-windows.yml)
+[![CI](https://github.com/ItsJeffTheDev/ByteRescue/actions/workflows/python-ci.yml/badge.svg)](https://github.com/ItsJeffTheDev/ByteRescue/actions/workflows/python-ci.yml)
+[![Build](https://github.com/ItsJeffTheDev/ByteRescue/actions/workflows/build-windows.yml/badge.svg)](https://github.com/ItsJeffTheDev/ByteRescue/actions/workflows/build-windows.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
-[![GitHub Stars](https://img.shields.io/github/stars/CodingJeffRoblox/ByteRescue?style=social)](https://github.com/CodingJeffRoblox/ByteRescue/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/ItsJeffTheDev/ByteRescue?style=social)](https://github.com/ItsJeffTheDev/ByteRescue/stargazers)
 
 > A read-oriented desktop utility for storage analysis, file inspection, hashing, hex viewing, and signature/text-based recovery.
 
@@ -15,7 +15,7 @@
 
 *Released: September 22, 2026*
 
-**Repository:** [github.com/CodingJeffRoblox/ByteRescue](https://github.com/CodingJeffRoblox/ByteRescue)
+**Repository:** [github.com/ItsJeffTheDev/ByteRescue](https://github.com/ItsJeffTheDev/ByteRescue)
 
 ---
 
@@ -31,9 +31,9 @@ ByteRescue is being developed as an open-source storage analysis and recovery pr
 - [Security Policy](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Report a Bug](https://github.com/CodingJeffRoblox/ByteRescue/issues/new?template=bug_report.yml)
-- [Request a Feature](https://github.com/CodingJeffRoblox/ByteRescue/issues/new?template=feature_request.yml)
-- [Releases](https://github.com/CodingJeffRoblox/ByteRescue/releases)
+- [Report a Bug](https://github.com/ItsJeffTheDev/ByteRescue/issues/new?template=bug_report.yml)
+- [Request a Feature](https://github.com/ItsJeffTheDev/ByteRescue/issues/new?template=feature_request.yml)
+- [Releases](https://github.com/ItsJeffTheDev/ByteRescue/releases)
 
 ## Start the GUI
 
@@ -439,7 +439,7 @@ As an open source project, contributions are welcome! Please see [CONTRIBUTING.m
 - Submitting pull requests
 - Development priorities and focus areas
 
-**Contribute on GitHub:** [https://github.com/CodingJeffRoblox/ByteRescue/fork](https://github.com/CodingJeffRoblox/ByteRescue/fork)
+**Contribute on GitHub:** [https://github.com/ItsJeffTheDev/ByteRescue/fork](https://github.com/ItsJeffTheDev/ByteRescue/fork)
 
 ### Support
 
@@ -450,8 +450,8 @@ For help with using ByteRescue, troubleshooting, and common issues, please see [
 - When recovery isn't possible
 - Community support resources
 
-**Report Issues:** [https://github.com/CodingJeffRoblox/ByteRescue/issues](https://github.com/CodingJeffRoblox/ByteRescue/issues)
-**Discussions:** [https://github.com/CodingJeffRoblox/ByteRescue/discussions](https://github.com/CodingJeffRoblox/ByteRescue/discussions)
+**Report Issues:** [https://github.com/ItsJeffTheDev/ByteRescue/issues](https://github.com/ItsJeffTheDev/ByteRescue/issues)
+**Discussions:** [https://github.com/ItsJeffTheDev/ByteRescue/discussions](https://github.com/ItsJeffTheDev/ByteRescue/discussions)
 
 ### Disclaimer
 
