@@ -9,10 +9,10 @@ description = "Storage Analysis & Data Recovery - A read-oriented desktop utilit
 readme = "README.md"
 license = "MIT"
 authors = [
-    {name = "CodingJeffRoblox"}
+    {name = "ItsJeffTheDev"}
 ]
 maintainers = [
-    {name = "CodingJeffRoblox"}
+    {name = "ItsJeffTheDev"}
 ]
 keywords = [
     "data-recovery",
@@ -61,11 +61,11 @@ dev = [
 byterescue = "byterescue.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/CodingJeffRoblox/ByteRescue"
-Documentation = "https://github.com/CodingJeffRoblox/ByteRescue#readme"
-Repository = "https://github.com/CodingJeffRoblox/ByteRescue"
-"Bug Tracker" = "https://github.com/CodingJeffRoblox/ByteRescue/issues"
-"Source Code" = "https://github.com/CodingJeffRoblox/ByteRescue"
+Homepage = "https://github.com/ItsJeffTheDev/ByteRescue"
+Documentation = "https://github.com/ItsJeffTheDev/ByteRescue#readme"
+Repository = "https://github.com/ItsJeffTheDev/ByteRescue"
+"Bug Tracker" = "https://github.com/ItsJeffTheDev/ByteRescue/issues"
+"Source Code" = "https://github.com/ItsJeffTheDev/ByteRescue"
 
 [tool.setuptools]
 package-dir = {"" = "."}
